@@ -1,0 +1,3 @@
+This folder is for routers for customer, categories, products and orders
+
+create route api's according to their models

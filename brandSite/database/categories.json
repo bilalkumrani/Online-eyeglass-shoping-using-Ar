@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "6202c24017cec25900f0ba63"
+  },
+  "category": "accessories",
+  "subCategories": [
+    "watch",
+    "badge",
+    "earphones",
+    "usb",
+    "tv"
+  ]
+},{
+  "_id": {
+    "$oid": "62052584280b11d7f44adc94"
+  },
+  "category": "clothes",
+  "subCategories": [
+    "jeans",
+    "shirts",
+    "t-shirts",
+    "underwears",
+    "formals",
+    "casuals"
+  ]
+},{
+  "_id": {
+    "$oid": "6205259d280b11d7f44adc9f"
+  },
+  "category": "shoes",
+  "subCategories": [
+    "office",
+    "snikkers",
+    "joggers"
+  ]
+}]
