@@ -1,1 +1,0 @@
-Cart features will be implemented through local storage
