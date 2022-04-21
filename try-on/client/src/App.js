@@ -1,10 +1,10 @@
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <>
-      <div className="bg-indigo-500">
-        Hello world this is first page of the website
-      </div>
-    </>
+    <div>
+      <Navbar />
+    </div>
   );
 }
 
