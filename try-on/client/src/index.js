@@ -1,11 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
+import React from 'react'
+import { render } from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <>
-    <App />
-  </>
+import './styles/index.scss'
+
+import AppCanvas from './js/components/AppCanvas'
+
+render(
+  <AppContainer>
+    <AppCanvas />
+  </AppContainer>,
+  document.querySelector('#root')
 );
