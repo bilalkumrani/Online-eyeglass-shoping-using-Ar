@@ -1,14 +1,14 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
+import React from "react";
+import { render } from "react-dom";
+import { AppContainer } from "react-hot-loader";
 
-import './styles/index.scss'
+import "./styles/index.css";
 
-import AppCanvas from './js/components/AppCanvas'
+import AppCanvas from "./js/components/AppCanvas";
 
 render(
   <AppContainer>
     <AppCanvas />
   </AppContainer>,
-  document.querySelector('#root')
+  document.querySelector("#root")
 );
