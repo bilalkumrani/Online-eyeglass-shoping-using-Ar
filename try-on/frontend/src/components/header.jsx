@@ -2,15 +2,10 @@ import { useNavigate, Link } from "react-router-dom";
 import JsonData from "../data/data.json";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";
-import { red, green, blue, yellow, orange } from "@mui/material/colors";
+
 import Framescards from "./Framescards";
 
 export const Header = () => {
-  let navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate("/tryon");
-  };
-
   return (
     <>
       <header id="header">
@@ -69,8 +64,9 @@ export const Header = () => {
             borderColor: "grey.500",
           }}
         >
-          SHOP EYEGLASSES
+          <Link to="eyeglasses">SHOP EYEGLASSES</Link>
         </Button>
+
         <Button
           variant="outlined"
           size="large"
@@ -85,10 +81,16 @@ export const Header = () => {
           SHOP SUNGLASSES
         </Button>
       </div>
-      <Framescards />
-      <Framescards />
-      <Framescards />
-      <Framescards />
+
+      <div className="container">
+        <div className="row">
+          <Framescards />
+          <Framescards />
+          <Framescards />
+          <Framescards />
+        </div>
+      </div>
+
       <Contact />
     </>
   );

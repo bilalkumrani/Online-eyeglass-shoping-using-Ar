@@ -33,7 +33,7 @@ export const Contact = (props) => {
   };
   return (
     <>
-      <div>
+      <div style={{ marginTop: "20px" }}>
         <div id="contact">
           <div className="container">
             <div className="col-md-8">
@@ -158,7 +158,7 @@ export const Contact = (props) => {
         <div id="footer">
           <div className="container text-center">
             <p>
-              &copy; 2020 Eye-Bye. Design by{" "}
+              &copy; 2022 Eye-Bye. Design by{" "}
               <a href="http://www.templatewire.com" rel="nofollow">
                 Team
               </a>

@@ -8,11 +8,11 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red, green, blue } from "@mui/material/colors";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Button from "@mui/material/Button";
+
 import img from "../images/intro-bg.jpg";
 
 const ExpandMore = styled((props) => {
@@ -34,8 +34,8 @@ const Framescards = () => {
   };
 
   return (
-    <div className="row" style={{ marginTop: "20px" }}>
-      <div className="col-md-3">
+    <>
+      <div className="col-md-3" style={{ marginTop: "20px" }}>
         <Card>
           <CardMedia
             component="img"
@@ -79,7 +79,7 @@ const Framescards = () => {
           </Collapse>
         </Card>
       </div>
-    </div>
+    </>
   );
 };
 

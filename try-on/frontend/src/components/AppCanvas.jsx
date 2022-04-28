@@ -92,12 +92,12 @@ function AppCanvas(props) {
       <canvas ref={refCanvas} className="JeelizVTOWidgetCanvas"></canvas>
 
       <div ref={refAdjustEnter} className="JeelizVTOWidgetControls">
-        <button
+        {/* <button
           className="JeelizVTOWidgetButton JeelizVTOWidgetAdjustEnterButton"
           onClick={enter_adjustMode}
         >
           Adjust
-        </button>
+        </button> */}
       </div>
 
       <div ref={refAdjust} className="JeelizVTOWidgetAdjustNotice">
@@ -110,7 +110,7 @@ function AppCanvas(props) {
         </button>
       </div>
 
-      <div
+      {/* <div
         ref={refChangeModel}
         className="JeelizVTOWidgetControls JeelizVTOWidgetChangeModelContainer"
       >
@@ -135,7 +135,7 @@ function AppCanvas(props) {
         >
           Model 3
         </button>
-      </div>
+      </div> */}
 
       <div ref={refLoading} className="JeelizVTOWidgetLoading">
         <div className="JeelizVTOWidgetLoadingText">LOADING...</div>
