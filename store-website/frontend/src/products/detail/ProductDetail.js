@@ -1,4 +1,4 @@
-import Image from "../../nillkin-case-1.jpg";
+import Image from "../../all glasses-20220427T235332Z-001/all glasses/aliexpress_steampunk_brass_gold.jpg";
 import RelatedProduct from "./RelatedProduct";
 import Ratings from "react-ratings-declarative";
 import { Link } from "react-router-dom";
@@ -12,11 +12,14 @@ function ProductDetail() {
 
   return (
     <div className="container mt-5 py-4 px-xl-5">
-      <ScrollToTopOnMount/>
+      <ScrollToTopOnMount />
       <nav aria-label="breadcrumb" className="bg-custom-light rounded mb-4">
         <ol className="breadcrumb p-3">
           <li className="breadcrumb-item">
-            <Link className="text-decoration-none link-secondary" to="/products">
+            <Link
+              className="text-decoration-none link-secondary"
+              to="/products"
+            >
               All Prodcuts
             </Link>
           </li>
@@ -86,7 +89,7 @@ function ProductDetail() {
 
         <div className="col-lg-5">
           <div className="d-flex flex-column h-100">
-            <h2 className="mb-1">Nillkin iPhone X cover</h2>
+            <h2 className="mb-1">Rayban Eye wear</h2>
             <h4 className="text-muted mb-4">10000 Ks</h4>
 
             <div className="row g-3 mb-4">
@@ -110,10 +113,10 @@ function ProductDetail() {
               <dd className="col-sm-8 mb-3">Cases & Covers</dd>
 
               <dt className="col-sm-4">Brand</dt>
-              <dd className="col-sm-8 mb-3">iPhone X</dd>
+              <dd className="col-sm-8 mb-3">Lightining</dd>
 
               <dt className="col-sm-4">Manufacturer</dt>
-              <dd className="col-sm-8 mb-3">Nillkin</dd>
+              <dd className="col-sm-8 mb-3">Rayban</dd>
 
               <dt className="col-sm-4">Color</dt>
               <dd className="col-sm-8 mb-3">Red, Green, Blue, Pink</dd>

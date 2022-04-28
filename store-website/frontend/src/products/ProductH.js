@@ -1,4 +1,4 @@
-import Image from "../nillkin-case-1.jpg";
+import Image from "../all glasses-20220427T235332Z-001/all glasses/aliexpress_steampunk_brass_gold.jpg";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
