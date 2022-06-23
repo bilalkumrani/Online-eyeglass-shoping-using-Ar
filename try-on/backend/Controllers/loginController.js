@@ -8,13 +8,13 @@ const login = async (req, res) => {
   if (!email || !password) {
     return res.status(422).json({ error: "password or email is missing" });
   }
-  const savedUser = await User.findOne({ email: email });
+  const savedUser = await User.findOne({ email });
   if (!savedUser) {
     return res.status(422).json({ error: "Invalid password or Eamil" });
   }
   let matched = await bcrypt.compare(password, savedUser.password);
   if (matched) {
-    const token = jwt.sign({ _id: savedUser._id, JT_SECRET });
+    const token = jwt.sign({ _id: savedUser._id }, JT_SECRET);
     return res.json({ status: "ok", user: savedUser, token });
   } else {
     res.status(422).json({ error: "Invalid password or Eamil" });
