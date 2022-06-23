@@ -16,8 +16,9 @@ const productSchema = new mongoose.Schema({
   pic: {
     type: String,
     default:
-      "https://res.cloudinary.com/doidlafka/image/upload/v1622565309/dummy-profile-pic-300x300-1_mplinc.png",
+      "https://media.istockphoto.com/photos/eyeglasses-isolated-on-white-background-with-clipping-path-picture-id1304136213?b=1&k=20&m=1304136213&s=170667a&w=0&h=-bgkU3YIweB63JV9z-rD0AT2nh-XGhxULv22weDP6v0=",
   },
 });
 
-mongoose.model("Product", productSchema);
+const product = mongoose.model("Product", productSchema);
+module.exports = product;

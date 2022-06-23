@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const User = require("../Models/User");
+const User = require("../../Models/User");
 const bcrypt = require("bcrypt");
-const { JT_SECRET } = require("../keys");
+const { JT_SECRET } = require("../../keys");
 const jwt = require("jsonwebtoken");
 const login = async (req, res) => {
   const { email, password } = req.body;

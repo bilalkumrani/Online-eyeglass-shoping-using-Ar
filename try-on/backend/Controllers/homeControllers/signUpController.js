@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("../Models/User");
+const User = require("../../Models/User");
 const bcrypt = require("bcrypt");
 const signUp = async (req, res) => {
   const { name, email, password: originalPass, pic } = req.body;
