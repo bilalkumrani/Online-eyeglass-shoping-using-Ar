@@ -91,6 +91,10 @@ export const Header = () => {
           <Framescards />
           <Framescards />
           <Framescards />
+          <Framescards />
+          <Framescards />
+          <Framescards />
+          <Framescards />
         </div>
       </div>
 

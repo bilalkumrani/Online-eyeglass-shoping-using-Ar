@@ -1,36 +1,21 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Button from "@mui/material/Button";
+import { FaShoppingCart } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import img from "../images/intro-bg.jpg";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
-
 const Framescards = () => {
-  const [expanded, setExpanded] = React.useState(false);
+  const [clicked, setClicked] = useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleClick = () => {
+    setClicked(true);
   };
 
   return (
@@ -39,7 +24,13 @@ const Framescards = () => {
         className="col-md-3"
         style={{ marginTop: "20px", position: "sticky", zIndex: "0" }}
       >
-        <Card>
+        <Card
+          sx={{
+            boxShadow: 3,
+
+            borderRadius: 1,
+          }}
+        >
           <CardMedia
             component="img"
             height="194"
@@ -47,39 +38,30 @@ const Framescards = () => {
             alt="Paella dish"
           />
 
-          <CardContent></CardContent>
-          <div className="text-center">Model Name and price</div>
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
+          <div
+            className="text-center"
+            style={{ display: "flex", justifyContent: "space-around" }}
+          >
+            <h5 className="text-muted">name</h5>
+            <h5 className="text-muted">Price</h5>
+          </div>
+          <div className="text-center">
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{
+                m: 2,
+                width: 200,
+                height: "5%",
+                color: "black",
+                borderColor: "grey.500",
+              }}
             >
-              <ExpandMoreIcon />
-            </ExpandMore>
-          </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Typography paragraph>Method:</Typography>
-              <Typography paragraph>
-                Heat 1/2 cup of the broth in a pot until simmering, add saffron
-                and set aside for 10 minutes.
-              </Typography>
-
-              <Typography>
-                Set aside off of the heat to let rest for 10 minutes, and then
-                serve.
-              </Typography>
-            </CardContent>
-          </Collapse>
+              <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
+              Add toCart
+            </Button>
+            {/* {clicked ? <FaShoppingCart /> : <AiOutlineShoppingCart />} */}
+          </div>
         </Card>
       </div>
     </>
