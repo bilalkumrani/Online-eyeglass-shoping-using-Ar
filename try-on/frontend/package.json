@@ -12,14 +12,14 @@
     "bootstrap": "^5.1.3",
     "emailjs-com": "^2.6.4",
     "jeelizvtowidget": "^2.3.2",
-    "mdb-react-ui-kit": "^3.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.3.1",
+    "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^4.0.2",
-    "smooth-scroll": "^16.1.3"
+    "redux": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

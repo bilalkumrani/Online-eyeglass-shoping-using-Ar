@@ -3,10 +3,13 @@ import JsonData from "../data/data.json";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";
 import CatAndFilters from "./CatAndFilters";
+import { useSelector, useDispatch } from "react-redux";
 
 import Framescards from "./Framescards";
 
 export const Header = () => {
+  const state = useSelector((state) => state.manageItems);
+
   return (
     <>
       <header id="header">
@@ -87,14 +90,11 @@ export const Header = () => {
 
       <div className="container">
         <div className="row">
-          <Framescards />
-          <Framescards />
-          <Framescards />
-          <Framescards />
-          <Framescards />
-          <Framescards />
-          <Framescards />
-          <Framescards />
+          {state.map((item) => {
+            return (
+              <Framescards id={item.id} name={item.name} price={item.price} />
+            );
+          })}
         </div>
       </div>
 

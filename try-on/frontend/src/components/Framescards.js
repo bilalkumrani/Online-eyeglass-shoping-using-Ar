@@ -7,7 +7,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import img from "../images/intro-bg.jpg";
 
-const Framescards = () => {
+const Framescards = ({ id, name, price }) => {
   return (
     <>
       <div
@@ -34,8 +34,8 @@ const Framescards = () => {
             className="text-center"
             style={{ display: "flex", justifyContent: "space-around" }}
           >
-            <h5 className="text-muted">name</h5>
-            <h5 className="text-muted">Price</h5>
+            <h5 className="text-muted">{name}</h5>
+            <h5 className="text-muted">{price}</h5>
           </div>
           <div className="text-center">
             <Button
