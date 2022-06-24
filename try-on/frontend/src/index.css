@@ -121,7 +121,7 @@ code {
 }
 .search-form .form-group:hover,
 .search-form .form-group.hover {
-  width: 48%;
+  width: 40%;
   border-radius: 25px 25px 25px 25px;
 }
 .search-form .form-group span.form-control-feedback {
