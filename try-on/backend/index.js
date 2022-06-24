@@ -6,12 +6,13 @@ const userRoutes = require("./Routes/userRoutes");
 const productRoutes = require("./Routes/productRoutes");
 const adminRoutes = require("./Routes/adminRoutes");
 const bodyParser = require("body-parser");
+const authenticate = require("./Middleware/Authenticate");
 const PORT = 4000;
 
 app.use(bodyParser.json());
 app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
-//app.use("/user", userRoutes);
+app.use("/user", authenticate, userRoutes);
 //app.use("/product", productRoutes);
 
 app.listen(PORT, () => {
