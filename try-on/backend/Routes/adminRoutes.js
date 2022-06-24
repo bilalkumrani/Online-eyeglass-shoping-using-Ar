@@ -1,8 +1,11 @@
 const express = require("express");
 const addProduct = require("../Controllers/adminControllers/addProductController");
 const removeProduct = require("../Controllers/adminControllers/removeProductController");
+const login = require("../Controllers/adminControllers/loginController");
+const isAdmin = require("../Middleware/isAdmin");
 const router = express.Router();
 
-router.post("/add", addProduct);
-router.delete("/remove", removeProduct);
+router.get("/login", login);
+router.post("/add", isAdmin, addProduct);
+router.delete("/remove", isAdmin, removeProduct);
 module.exports = router;
