@@ -35,7 +35,10 @@ const Framescards = () => {
 
   return (
     <>
-      <div className="col-md-3" style={{ marginTop: "20px" }}>
+      <div
+        className="col-md-3"
+        style={{ marginTop: "20px", position: "sticky", zIndex: "0" }}
+      >
         <Card>
           <CardMedia
             component="img"

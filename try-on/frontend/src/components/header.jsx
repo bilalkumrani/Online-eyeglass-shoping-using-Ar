@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import JsonData from "../data/data.json";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";
+import CatAndFilters from "./CatAndFilters";
 
 import Framescards from "./Framescards";
 
@@ -64,7 +65,7 @@ export const Header = () => {
             borderColor: "grey.500",
           }}
         >
-          <Link to="eyeglasses">SHOP EYEGLASSES</Link>
+          SHOP EYEGLASSES
         </Button>
 
         <Button
@@ -81,6 +82,8 @@ export const Header = () => {
           SHOP SUNGLASSES
         </Button>
       </div>
+
+      <CatAndFilters />
 
       <div className="container">
         <div className="row">
