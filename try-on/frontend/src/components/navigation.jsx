@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import CartBtn from "./CartBtn";
 
 export const Navigation = () => {
   return (
@@ -25,6 +26,7 @@ export const Navigation = () => {
         <div
           className="collapse navbar-collapse "
           id="bs-example-navbar-collapse-1"
+          style={{ marginLeft: "40px" }}
         >
           <ul className="nav navbar-nav navbar-right">
             <li>
@@ -37,6 +39,14 @@ export const Navigation = () => {
                 Eyeglasses
               </Link>
             </li>
+            <div
+              style={{ display: "inline" }}
+              onClick={() => {
+                console.log("this");
+              }}
+            >
+              <CartBtn />
+            </div>
           </ul>
 
           <form action="" className="search-form">
