@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import AppCanvas from "./components/AppCanvas";

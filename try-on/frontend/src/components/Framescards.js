@@ -1,23 +1,13 @@
-import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
+import React from "react";
+import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import img from "../images/intro-bg.jpg";
 
 const Framescards = () => {
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    setClicked(true);
-  };
-
   return (
     <>
       <div
@@ -31,12 +21,14 @@ const Framescards = () => {
             borderRadius: 1,
           }}
         >
-          <CardMedia
-            component="img"
-            height="194"
-            image={img}
-            alt="Paella dish"
-          />
+          <Link to="product">
+            <CardMedia
+              component="img"
+              height="194"
+              image={img}
+              alt="Paella dish"
+            />
+          </Link>
 
           <div
             className="text-center"

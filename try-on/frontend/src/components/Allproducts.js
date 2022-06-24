@@ -1,9 +1,19 @@
 import React from "react";
+import Framescards from "./Framescards";
 
 const Allproducts = () => {
   return (
-    <div className="text-center" style={{ marginTop: "100px" }}>
-      <h2>Allproductsherefromdb</h2>
+    <div className="container" style={{ marginTop: "100px" }}>
+      <div className="row">
+        <Framescards />
+        <Framescards />
+        <Framescards />
+        <Framescards />
+        <Framescards />
+        <Framescards />
+        <Framescards />
+        <Framescards />
+      </div>
     </div>
   );
 };

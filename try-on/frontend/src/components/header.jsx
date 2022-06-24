@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import JsonData from "../data/data.json";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";

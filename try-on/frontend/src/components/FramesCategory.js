@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 
 const FramesCategory = ({ frame, closeGenderDiv }) => {

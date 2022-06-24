@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Category from "./Category";
