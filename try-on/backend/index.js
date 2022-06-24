@@ -7,9 +7,11 @@ const productRoutes = require("./Routes/productRoutes");
 const adminRoutes = require("./Routes/adminRoutes");
 const bodyParser = require("body-parser");
 const authenticate = require("./Middleware/Authenticate");
+const cors = require("cors");
 const PORT = 4000;
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", authenticate, userRoutes);
