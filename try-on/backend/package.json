@@ -14,6 +14,7 @@
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.0"
+    "mongoose": "^6.4.0",
+    "razorpay": "^2.8.1"
   }
 }
