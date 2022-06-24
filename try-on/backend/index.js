@@ -15,7 +15,7 @@ app.use(cors());
 app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", authenticate, userRoutes);
-//app.use("/product", productRoutes);
+app.use("/product", productRoutes);
 
 app.listen(PORT, () => {
   console.log("listening on: ", PORT);
