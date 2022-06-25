@@ -7,6 +7,7 @@ const productRoutes = require("./Routes/productRoutes");
 const adminRoutes = require("./Routes/adminRoutes");
 const bodyParser = require("body-parser");
 const authenticate = require("./Middleware/Authenticate");
+const payment = require("./Routes/paymentRoutes");
 const cors = require("cors");
 const PORT = 4000;
 
@@ -26,6 +27,7 @@ app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", authenticate, userRoutes);
 app.use("/product", productRoutes);
+app.use("/payment", payment);
 
 app.listen(PORT, () => {
   console.log("listening on: ", PORT);
