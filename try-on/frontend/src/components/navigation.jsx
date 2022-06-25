@@ -9,21 +9,21 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import Signin from "./Signin";
+import Signup from "./Signup";
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
-
-  boxShadow: 24,
-  p: 4,
 };
 export const Navigation = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [signin, setSignIn] = useState(false);
+  const [singup, setSignUp] = useState(false);
+  const handleOpen = () => setSignIn(true);
+  const handleClose = () => setSignIn(false);
+  const openSign = () => setSignUp(true);
+  const closeSign = () => setSignUp(false);
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -79,7 +79,7 @@ export const Navigation = () => {
               <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
-                open={open}
+                open={signin}
                 onClose={handleClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
@@ -87,7 +87,7 @@ export const Navigation = () => {
                   timeout: 500,
                 }}
               >
-                <Fade in={open}>
+                <Fade in={signin}>
                   <Box sx={style}>
                     <Signin />
                   </Box>
@@ -97,10 +97,27 @@ export const Navigation = () => {
             <li>
               <Button
                 style={{ marginTop: "10px", color: "gray" }}
-                onClick={handleClose}
+                onClick={openSign}
               >
                 Sign up
               </Button>
+              <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={singup}
+                onClose={closeSign}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                  timeout: 500,
+                }}
+              >
+                <Fade in={singup}>
+                  <Box sx={style}>
+                    <Signup />
+                  </Box>
+                </Fade>
+              </Modal>
             </li>
           </ul>
 

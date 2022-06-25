@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Framescards from "./Framescards";
-import Framecards from "./Framescards";
+import { addItem, deleteItem } from "../redux/actions/index";
+import { useDispatch, useSelector } from "react-redux";
 
 const Allproducts = () => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
   useEffect(() => {
-    // axios.get("http://localhost:4000/product/all", (res, err) => {
-    //   console.log(res);
-    // });
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
-      .then((result) => setData(result.data));
+      .then((result) => console.log(result.data));
   }, []);
 
+  // const state = useSelector((state) => state.manageItems);
+
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
-      <div className="row">
-        {data.map((item) => {
-          return (
-            <Framescards id={item._id} name={item.name} price={item.price} />
-          );
-        })}
+    <>
+      {/* {console.log(state)} */}
+      <div className="container" style={{ marginTop: "100px" }}>
+        <div className="row">
+          {data.map((item) => {
+            return (
+              <Framescards id={item._id} name={item.name} price={item.price} />
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
