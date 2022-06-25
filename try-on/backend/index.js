@@ -11,7 +11,6 @@ const cors = require("cors");
 const PORT = 4000;
 
 app.use(bodyParser.json());
-app.use(cors());
 
 const corsOptions = {
   origin: "*",
