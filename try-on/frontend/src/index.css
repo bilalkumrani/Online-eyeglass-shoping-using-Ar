@@ -143,3 +143,9 @@ code {
 Button:hover {
   border-color: black !important;
 }
+
+@media (max-width: 1200px) {
+  .search-form {
+    display: none;
+  }
+}
