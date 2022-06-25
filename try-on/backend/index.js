@@ -12,6 +12,17 @@ const PORT = 4000;
 
 app.use(bodyParser.json());
 app.use(cors());
+
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", authenticate, userRoutes);

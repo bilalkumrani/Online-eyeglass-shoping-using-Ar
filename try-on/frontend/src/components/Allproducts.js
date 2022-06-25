@@ -1,23 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Framescards from "./Framescards";
-import axios from "axios";
+import Framecards from "./Framescards";
 
 const Allproducts = () => {
+  const [data, setData] = useState([]);
   useEffect(() => {
-    axios
-      .get("https://localhost:4000/product/all", {
-        header: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        },
-      })
-      .then((res) => console.log(res.json()));
+    // axios.get("http://localhost:4000/product/all", (res, err) => {
+    //   console.log(res);
+    // });
+    fetch("http://localhost:4000/product/all")
+      .then((res) => res.json())
+      .then((result) => setData(result.data));
   }, []);
 
   return (
     <div className="container" style={{ marginTop: "100px" }}>
       <div className="row">
-        <h2>All Products Here</h2>
+        {data.map((item) => {
+          return (
+            <Framescards id={item._id} name={item.name} price={item.price} />
+          );
+        })}
       </div>
     </div>
   );
