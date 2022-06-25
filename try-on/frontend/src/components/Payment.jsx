@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const Payment = () => {
   function loadScript(src) {
@@ -42,7 +43,7 @@ const Payment = () => {
       currency: currency,
       name: "Bilal Khan.",
       description: "Test Transaction",
-      image: { logo },
+
       order_id: order_id,
       handler: async function (response) {
         const data = {
