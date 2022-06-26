@@ -9,7 +9,7 @@ import { addItem, deleteItem } from "../redux/actions/index";
 
 import img from "../images/intro-bg.jpg";
 
-const Framescards = ({ index, id, name, price, products }) => {
+const Framescards = (product) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.addItem);
   const [cartbtn, setCarBtn] = useState("Add");
@@ -51,8 +51,8 @@ const Framescards = ({ index, id, name, price, products }) => {
             className="text-center"
             style={{ display: "flex", justifyContent: "space-around" }}
           >
-            <h5 className="text-muted">{name}</h5>
-            <h5 className="text-muted">{price}</h5>
+            <h5 className="text-muted">{product.name}</h5>
+            <h5 className="text-muted">{product.price}</h5>
           </div>
           <div className="text-center">
             <Button
@@ -65,7 +65,9 @@ const Framescards = ({ index, id, name, price, products }) => {
                 color: "black",
                 borderColor: "grey.500",
               }}
-              onClick={() => addToCart(products[index + 1])}
+              onClick={() => {
+                addToCart(product);
+              }}
             >
               <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
               {cartbtn}
