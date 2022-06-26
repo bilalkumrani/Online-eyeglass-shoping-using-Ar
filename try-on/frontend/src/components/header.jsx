@@ -1,14 +1,22 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import JsonData from "../data/data.json";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";
 import CatAndFilters from "./CatAndFilters";
-import { useSelector } from "react-redux";
 
 import Framescards from "./Framescards";
 
 export const Header = () => {
-  const state = useSelector((state) => state.manageItems);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/product/all")
+      .then((res) => res.json())
+      .then((result) => {
+        setProducts(result.data);
+      });
+  }, [1]);
 
   return (
     <>
@@ -90,7 +98,7 @@ export const Header = () => {
 
       <div className="container">
         <div className="row">
-          {state.map((item) => {
+          {products.map((item) => {
             return (
               <Framescards id={item.id} name={item.name} price={item.price} />
             );

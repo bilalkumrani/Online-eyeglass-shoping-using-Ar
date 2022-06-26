@@ -2,11 +2,11 @@ import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import AppCanvas from "./components/AppCanvas";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
-import "./index.css";
 import Sunglasses from "./components/Sunglasses";
 import Eyeglasses from "./components/Eyeglasses";
 import Allproducts from "./components/Allproducts";
+import "./App.css";
+import "./index.css";
 
 const App = () => {
   return (

@@ -1,35 +1,34 @@
 import * as React from "react";
 import Badge from "@mui/material/Badge";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 
 export default function CartBtn() {
-  const length = 1;
-
-  {
-    if (length === 0) {
-      return (
-        <Badge
-          sx={{
-            m: 2,
-          }}
-          color="secondary"
-        >
-          <AiOutlineShoppingCart size={25} />
-        </Badge>
-      );
-    } else {
-      return (
-        <Badge
-          variant="dot"
-          badgeContent=" "
-          sx={{
-            m: 2,
-          }}
-          color="secondary"
-        >
-          <AiOutlineShoppingCart size={25} />
-        </Badge>
-      );
-    }
+  const state = useSelector((state) => state.manageItems);
+  if (state.length === 0) {
+    return (
+      <IconButton aria-label="cart">
+        <ShoppingCartIcon />
+      </IconButton>
+    );
+  } else {
+    return (
+      <IconButton aria-label="cart">
+        <StyledBadge badgeContent={state.length} color="secondary">
+          <ShoppingCartIcon />
+        </StyledBadge>
+      </IconButton>
+    );
   }
 }
