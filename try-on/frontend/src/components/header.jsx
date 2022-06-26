@@ -4,7 +4,6 @@ import JsonData from "../data/data.json";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";
 import CatAndFilters from "./CatAndFilters";
-
 import Framescards from "./Framescards";
 
 export const Header = () => {
@@ -14,7 +13,11 @@ export const Header = () => {
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
       .then((result) => {
+        console.log(result.data);
         setProducts(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, [1]);
 
@@ -98,9 +101,15 @@ export const Header = () => {
 
       <div className="container">
         <div className="row">
-          {products.map((item) => {
+          {products.map((item, index) => {
             return (
-              <Framescards id={item.id} name={item.name} price={item.price} />
+              <Framescards
+                products={products}
+                key={item._id}
+                id={index + 1}
+                name={item.name}
+                price={item.price}
+              />
             );
           })}
         </div>
