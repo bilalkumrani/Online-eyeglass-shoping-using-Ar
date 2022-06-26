@@ -109,6 +109,7 @@ export const Header = () => {
                 id={index + 1}
                 name={item.name}
                 price={item.price}
+                index={index}
               />
             );
           })}
