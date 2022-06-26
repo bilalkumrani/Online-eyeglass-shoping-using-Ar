@@ -101,11 +101,12 @@ export const Header = () => {
 
       <div className="container">
         <div className="row">
-          {products.map((item) => {
+          {products.map((item, index) => {
             return (
               <Framescards
+                products={products}
                 key={item._id}
-                id={item.id}
+                id={index + 1}
                 name={item.name}
                 price={item.price}
               />

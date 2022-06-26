@@ -61,7 +61,7 @@ export const Navigation = () => {
             </li>
 
             <div
-              style={{ display: "inline", marginTop: "166px" }}
+              style={{ display: "inline" }}
               onClick={() => {
                 console.log("this");
               }}
