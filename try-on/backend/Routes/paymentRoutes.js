@@ -3,5 +3,5 @@ const orders = require("../Controllers/paymentControllers/orders");
 const authenticate = require("../Middleware/Authenticate");
 const router = express.Router();
 
-router.post("/orders", authenticate, orders);
+router.post("/orders", orders);
 module.exports = router;

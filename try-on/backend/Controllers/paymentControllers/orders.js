@@ -1,4 +1,6 @@
-import { RAZOR } from "../../keys";
+const { RAZOR } = require("../../keys");
+const Razorpay = require("razorpay");
+
 const orders = async (req, res) => {
   try {
     const instance = new Razorpay({

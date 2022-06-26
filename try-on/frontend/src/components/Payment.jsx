@@ -27,7 +27,7 @@ const Payment = () => {
     }
 
     // creating a new order
-    const result = await axios.post("http://localhost:5000/payment/orders");
+    const result = await axios.post("http://localhost:4000/payment/orders");
 
     if (!result) {
       alert("Server error. Are you online?");
@@ -43,7 +43,7 @@ const Payment = () => {
       currency: currency,
       name: "Bilal Khan.",
       description: "Test Transaction",
-
+      Image: "",
       order_id: order_id,
       handler: async function (response) {
         const data = {
@@ -79,7 +79,7 @@ const Payment = () => {
   return (
     <div>
       <p>Buy React now!</p>
-      <button className="App-link" onClick={displayRazorpay}>
+      <button style={{ marginTop: "100px" }} onClick={displayRazorpay}>
         Pay 500 rs
       </button>
     </div>
