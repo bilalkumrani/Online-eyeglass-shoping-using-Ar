@@ -7,7 +7,7 @@ import Eyeglasses from "./components/Eyeglasses";
 import Allproducts from "./components/Allproducts";
 import Payment from "./components/Payment";
 import "./App.css";
-import "./index.css";
+import "./index";
 
 const App = () => {
   return (

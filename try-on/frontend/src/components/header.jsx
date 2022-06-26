@@ -100,7 +100,7 @@ export const Header = () => {
         <div className="row">
           {products.map((item) => {
             return (
-              <Framescards id={item.id} name={item.name} price={item.price} />
+              <Framescards id={item._id} name={item.name} price={item.price} />
             );
           })}
         </div>
