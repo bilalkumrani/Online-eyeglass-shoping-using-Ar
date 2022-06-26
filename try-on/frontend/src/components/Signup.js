@@ -27,7 +27,7 @@ const Signin = () => {
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
-          <h2>Sign In</h2>
+          <h2>Sign up</h2>
         </Grid>
         <TextField
           label="Username"
@@ -61,16 +61,8 @@ const Signin = () => {
             borderColor: "grey.500",
           }}
         >
-          Sign in
+          Sign UP
         </Button>
-
-        <Typography style={{ marginTop: "20px" }}>
-          <Link href="#">Forgot password ?</Link>
-        </Typography>
-        <Typography>
-          {" "}
-          Do you have an account ?<Link href="#">Sign Up</Link>
-        </Typography>
       </Paper>
     </Grid>
   );
