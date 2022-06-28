@@ -27,13 +27,15 @@ const Framescards = (product) => {
   return (
     <>
       <div
-        className="col-md-3"
+        className="col-md-4"
         style={{ marginTop: "50px", position: "sticky", zIndex: "0" }}
       >
         <Card
           sx={{
             boxShadow: 3,
-
+            width: 350,
+            m: "auto",
+            p: 1,
             borderRadius: 1,
           }}
         >

@@ -39,7 +39,6 @@ const Signin = () => {
   };
 
   const singinDetails = () => {
-    console.log(signinData);
     axios
       .get("http://localhost:4000/login", signinData)
       .then((res) => {

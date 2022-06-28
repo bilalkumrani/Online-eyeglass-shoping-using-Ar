@@ -9,6 +9,8 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -16,6 +18,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
 };
+
 export const Navigation = () => {
   const [cartList, setCartList] = useState("none");
   const [signin, setSignIn] = useState(false);
@@ -69,9 +72,6 @@ export const Navigation = () => {
               }}
             >
               <CartBtn />
-              <div style={{ display: `${cartList}`, position: "absolute" }}>
-                this is div
-              </div>
             </div>
             <li>
               <Button

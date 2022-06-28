@@ -141,7 +141,8 @@ code {
 }
 
 Button:hover {
-  border-color: black !important;
+  text-color: #256eff !important;
+  border-color: #256eff !important;
 }
 
 @media (max-width: 1200px) {
