@@ -15,7 +15,6 @@ const Framescards = (product) => {
   const [cartbtn, setCarBtn] = useState("Add");
 
   const addToCart = (product) => {
-    console.log(product);
     if (cartbtn === "Add") {
       dispatch(addItem(product));
       setCarBtn("Remove");
@@ -29,7 +28,7 @@ const Framescards = (product) => {
     <>
       <div
         className="col-md-3"
-        style={{ marginTop: "20px", position: "sticky", zIndex: "0" }}
+        style={{ marginTop: "50px", position: "sticky", zIndex: "0" }}
       >
         <Card
           sx={{

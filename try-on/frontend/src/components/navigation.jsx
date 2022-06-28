@@ -17,12 +17,14 @@ const style = {
   width: 400,
 };
 export const Navigation = () => {
+  const [cartList, setCartList] = useState("none");
   const [signin, setSignIn] = useState(false);
   const [singup, setSignUp] = useState(false);
   const handleOpen = () => setSignIn(true);
   const handleClose = () => setSignIn(false);
   const openSign = () => setSignUp(true);
   const closeSign = () => setSignUp(false);
+
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -63,10 +65,13 @@ export const Navigation = () => {
             <div
               style={{ display: "inline" }}
               onClick={() => {
-                console.log("this");
+                setCartList(cartList === "block" ? "none" : "block");
               }}
             >
               <CartBtn />
+              <div style={{ display: `${cartList}`, position: "absolute" }}>
+                this is div
+              </div>
             </div>
             <li>
               <Button

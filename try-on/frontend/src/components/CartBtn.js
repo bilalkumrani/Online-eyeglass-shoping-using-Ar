@@ -18,13 +18,13 @@ export default function CartBtn() {
   const state = useSelector((state) => state.manageItems);
   if (state.length === 0) {
     return (
-      <IconButton aria-label="cart">
+      <IconButton aria-label="cart" style={{ marginTop: "6px" }}>
         <ShoppingCartIcon />
       </IconButton>
     );
   } else {
     return (
-      <IconButton aria-label="cart">
+      <IconButton aria-label="cart" style={{ marginTop: "6px" }}>
         <StyledBadge badgeContent={state.length} color="secondary">
           <ShoppingCartIcon />
         </StyledBadge>

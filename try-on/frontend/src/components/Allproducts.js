@@ -8,7 +8,6 @@ const Allproducts = () => {
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.data);
         setProducts(result.data);
       })
       .catch((err) => {

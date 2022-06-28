@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Sunglasses from "./components/Sunglasses";
 import Eyeglasses from "./components/Eyeglasses";
 import Allproducts from "./components/Allproducts";
+import Productdetails from "./components/Productdetails";
 import Payment from "./components/Payment";
 import "./App.css";
 import "./index";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/eyeglasses" element={<Eyeglasses />} />
         <Route path="/all" element={<Allproducts />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/product" element={<Productdetails />} />
       </Routes>
     </>
   );

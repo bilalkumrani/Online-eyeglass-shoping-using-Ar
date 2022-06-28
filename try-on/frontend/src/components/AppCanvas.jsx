@@ -14,6 +14,7 @@ function init_VTOWidget(placeHolder, canvas, toggleLoading) {
     },
     sku: "empty", // SKU loadded at the beginning
     // image displayed when face is not found:
+    searchImageMask: "kjhj",
 
     searchImageColor: 0xeeeeee, // color of loading (face not found) animation
     searchImageRotationSpeed: -0.001, // negative -> clockwise
@@ -92,12 +93,12 @@ function AppCanvas(props) {
       <canvas ref={refCanvas} className="JeelizVTOWidgetCanvas"></canvas>
 
       <div ref={refAdjustEnter} className="JeelizVTOWidgetControls">
-        {/* <button
+        <button
           className="JeelizVTOWidgetButton JeelizVTOWidgetAdjustEnterButton"
           onClick={enter_adjustMode}
         >
           Adjust
-        </button> */}
+        </button>
       </div>
 
       <div ref={refAdjust} className="JeelizVTOWidgetAdjustNotice">
@@ -110,7 +111,7 @@ function AppCanvas(props) {
         </button>
       </div>
 
-      {/* <div
+      <div
         ref={refChangeModel}
         className="JeelizVTOWidgetControls JeelizVTOWidgetChangeModelContainer"
       >
@@ -135,7 +136,7 @@ function AppCanvas(props) {
         >
           Model 3
         </button>
-      </div> */}
+      </div>
 
       <div ref={refLoading} className="JeelizVTOWidgetLoading">
         <div className="JeelizVTOWidgetLoadingText">LOADING...</div>

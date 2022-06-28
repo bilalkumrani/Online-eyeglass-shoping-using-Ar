@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import axios from "axios";
+
 const Signin = () => {
   const paperStyle = {
     padding: 20,
@@ -12,6 +14,33 @@ const Signin = () => {
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
+
+  const [signupData, setSignup] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setSignup((state) => {
+      return {
+        ...state,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const singupDetails = () => {
+    axios
+      .post("http://localhost:4000/signup", signupData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
@@ -27,6 +56,23 @@ const Signin = () => {
           variant="outlined"
           fullWidth
           required
+          name="name"
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
+
+        <TextField
+          label="email"
+          placeholder="Enter email"
+          variant="outlined"
+          fullWidth
+          required
+          name="email"
+          style={{ marginTop: "10px" }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
 
         <TextField
@@ -36,7 +82,11 @@ const Signin = () => {
           variant="outlined"
           fullWidth
           required
+          name="password"
           style={{ marginTop: "10px" }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
         <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
@@ -52,6 +102,7 @@ const Signin = () => {
             color: "black",
             borderColor: "grey.500",
           }}
+          onClick={singupDetails}
         >
           Sign UP
         </Button>
