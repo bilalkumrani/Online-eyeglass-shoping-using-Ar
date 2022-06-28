@@ -3,6 +3,7 @@ const User = require("../../Models/User");
 const bcrypt = require("bcrypt");
 const { JT_SECRET } = require("../../keys");
 const jwt = require("jsonwebtoken");
+
 const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {

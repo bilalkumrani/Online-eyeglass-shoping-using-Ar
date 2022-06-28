@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import {
   Grid,
   Paper,
@@ -11,15 +12,44 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+
+const paperStyle = {
+  padding: 20,
+  height: "100%",
+  width: "100%",
+  margin: "20px auto",
+};
+
+const avatarStyle = { backgroundColor: "#1bbd7e" };
+const btnstyle = { margin: "8px 0" };
+
 const Signin = () => {
-  const paperStyle = {
-    padding: 20,
-    height: "100%",
-    width: "100%",
-    margin: "20px auto",
+  const [signinData, setSignin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setSignin((state) => {
+      return {
+        ...state,
+        [e.target.name]: e.target.value,
+      };
+    });
   };
-  const avatarStyle = { backgroundColor: "#1bbd7e" };
-  const btnstyle = { margin: "8px 0" };
+
+  const singinDetails = () => {
+    console.log(signinData);
+    axios
+      .get("http://localhost:4000/login", signinData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
@@ -30,11 +60,14 @@ const Signin = () => {
           <h2>Sign In</h2>
         </Grid>
         <TextField
-          label="Username"
-          placeholder="Enter username"
+          placeholder="Enter email"
           variant="outlined"
           fullWidth
           required
+          name="email"
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
 
         <TextField
@@ -44,7 +77,11 @@ const Signin = () => {
           variant="outlined"
           fullWidth
           required
+          name="password"
           style={{ marginTop: "10px" }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
         <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
@@ -60,6 +97,7 @@ const Signin = () => {
             color: "black",
             borderColor: "grey.500",
           }}
+          onClick={singinDetails}
         >
           Sign in
         </Button>

@@ -11,7 +11,7 @@ const payment = require("./Routes/paymentRoutes");
 const cors = require("cors");
 const PORT = 4000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ extended: true }));
 
 const corsOptions = {
   origin: "*",
