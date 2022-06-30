@@ -16,7 +16,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function CartBtn() {
   const state = useSelector((state) => state.manageItems);
-  if (state.length === 0) {
+  if (state.cart.length === 0) {
     return (
       <IconButton aria-label="cart" style={{ marginTop: "6px" }}>
         <ShoppingCartIcon />
@@ -25,7 +25,7 @@ export default function CartBtn() {
   } else {
     return (
       <IconButton aria-label="cart" style={{ marginTop: "6px" }}>
-        <StyledBadge badgeContent={state.length} color="secondary">
+        <StyledBadge badgeContent={state.cart.length} color="secondary">
           <ShoppingCartIcon />
         </StyledBadge>
       </IconButton>

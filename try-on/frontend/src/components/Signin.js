@@ -39,10 +39,11 @@ const Signin = () => {
   };
 
   const singinDetails = () => {
+    console.log(signinData);
     axios
-      .get("http://localhost:4000/login", signinData)
+      .post("http://localhost:4000/login", signinData)
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("token", res.data.token);
       })
       .catch((err) => {
         console.log(err);

@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import JsonData from "../data/data.json";
+import { getAlldata } from "../redux/actions/index";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";
 import CatAndFilters from "./CatAndFilters";
 import Framescards from "./Framescards";
 import Slider from "./Slider";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
+  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+  const { allProducts } = useSelector((state) => state.manageItems);
+
+  console.log("all products", allProducts);
 
   useEffect(() => {
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.data);
-        setProducts(result.data);
+        dispatch(getAlldata(result.data));
       })
       .catch((err) => {
         console.log(err);
@@ -29,7 +32,7 @@ export const Header = () => {
         Try on
       </Link> */}
 
-      <div className="text-center" style={{ marginTop: "30px" }}>
+      <div className="text-center" style={{ marginTop: "70px" }}>
         <Button
           variant="outlined"
           size="large"
@@ -63,7 +66,7 @@ export const Header = () => {
 
       <div className="container">
         <div className="row">
-          {products.map((item, index) => {
+          {allProducts.map((item, index) => {
             return (
               <Framescards id={item._id} name={item.name} price={item.price} />
             );

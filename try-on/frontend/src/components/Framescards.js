@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, deleteItem } from "../redux/actions/index";
+import axios from "axios";
 
 import img from "../images/intro-bg.jpg";
 
@@ -13,6 +14,24 @@ const Framescards = (product) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.addItem);
   const [cartbtn, setCarBtn] = useState("Add");
+
+  const cartDetails = (id) => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+
+      body: JSON.stringify({ productId: id }),
+    };
+
+    fetch("http://localhost:4000/user/addcart", requestOptions)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const addToCart = (product) => {
     if (cartbtn === "Add") {
@@ -27,19 +46,22 @@ const Framescards = (product) => {
   return (
     <>
       <div
-        className="col-md-4"
-        style={{ marginTop: "50px", position: "sticky", zIndex: "0" }}
+        className="col-sm-4 cards"
+        style={{
+          marginTop: "50px",
+          position: "sticky",
+          zIndex: "0",
+        }}
       >
         <Card
           sx={{
-            boxShadow: 3,
-            width: 350,
-            m: "auto",
-            p: 1,
+            boxShadow: 10,
+
+            p: 2,
             borderRadius: 1,
           }}
         >
-          <Link to="product">
+          <Link to={`/product/${product.id}`}>
             <CardMedia
               component="img"
               height="194"
@@ -60,7 +82,6 @@ const Framescards = (product) => {
               variant="outlined"
               size="large"
               sx={{
-                m: 2,
                 width: 200,
                 height: "5%",
                 color: "black",
@@ -68,6 +89,7 @@ const Framescards = (product) => {
               }}
               onClick={() => {
                 addToCart(product);
+                cartDetails(product.id);
               }}
             >
               <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />

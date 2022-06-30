@@ -141,7 +141,7 @@ code {
 }
 
 Button:hover {
-  text-color: #256eff !important;
+  color: #256eff !important;
   border-color: #256eff !important;
 }
 

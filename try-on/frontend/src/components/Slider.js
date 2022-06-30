@@ -5,7 +5,7 @@ import imgg from "../images/glass.jpg";
 const slideStyles = {
   width: "100%",
   height: "100%",
-  borderRadius: "10px",
+
   backgroundSize: "cover",
   backgroundPosition: "center",
 };
@@ -33,7 +33,7 @@ const leftArrowStyles = {
 };
 
 const sliderStyles = {
-  marginTop: "100px",
+  marginTop: "90px",
   position: "relative",
   height: "70%",
 };

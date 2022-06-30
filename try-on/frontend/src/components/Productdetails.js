@@ -1,10 +1,10 @@
 import * as React from "react";
 import img from "../images/intro-bg.jpg";
 import imgg from "../images/glass.jpg";
+import { useParams } from "react-router-dom";
 
-export default function FadeMenu() {
-  const changePic = () => {};
-
+export default function Productdetails() {
+  const prodId = useParams();
   return (
     <div class="card-wrapper">
       <div class="card">
@@ -18,16 +18,16 @@ export default function FadeMenu() {
             </div>
           </div>
           <div class="img-select">
-            <div class="img-item" onClick={changePic}>
+            <div class="img-item">
               <img src={img} alt="shoe image" />
             </div>
-            <div class="img-item" onClick={changePic}>
+            <div class="img-item">
               <img src={imgg} alt="shoe image" />
             </div>
-            <div class="img-item" onClick={changePic}>
+            <div class="img-item">
               <img src={img} alt="shoe image" />
             </div>
-            <div class="img-item" onClick={changePic}>
+            <div class="img-item">
               <img src={imgg} alt="shoe image" />
             </div>
           </div>

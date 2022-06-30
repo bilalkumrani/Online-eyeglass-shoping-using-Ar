@@ -5,6 +5,7 @@ const { JT_SECRET } = require("../../keys");
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
+  console.log(req.body);
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(422).json({ error: "password or email is missing" });
