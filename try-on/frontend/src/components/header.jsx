@@ -12,8 +12,6 @@ export const Header = () => {
   const [products, setProducts] = useState([]);
   const { allProducts } = useSelector((state) => state.manageItems);
 
-  console.log("all products", allProducts);
-
   useEffect(() => {
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
@@ -68,7 +66,12 @@ export const Header = () => {
         <div className="row">
           {allProducts.map((item, index) => {
             return (
-              <Framescards id={item._id} name={item.name} price={item.price} />
+              <Framescards
+                id={item._id}
+                prodIndex={index}
+                name={item.name}
+                price={item.price}
+              />
             );
           })}
         </div>

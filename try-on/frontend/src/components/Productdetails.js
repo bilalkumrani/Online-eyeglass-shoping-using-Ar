@@ -1,51 +1,67 @@
-import * as React from "react";
+import React, { useState } from "react";
 import img from "../images/intro-bg.jpg";
 import imgg from "../images/glass.jpg";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addItem, deleteItem } from "../redux/actions/index";
+import { useParams, useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function Productdetails() {
-  const prodId = useParams();
+  const dispatch = useDispatch();
+  const [cartbtn, setCarBtn] = useState("Add");
+  const { allProducts } = useSelector((state) => state.manageItems);
+  const { id } = useParams();
+  let navigate = useNavigate();
+
+  const addToCart = (product) => {
+    if (cartbtn === "Add") {
+      dispatch(addItem(product));
+      setCarBtn("Remove");
+    } else {
+      dispatch(deleteItem(product));
+      setCarBtn("Add");
+    }
+  };
+
   return (
-    <div class="card-wrapper">
-      <div class="card">
-        <div class="product-imgs">
-          <div class="img-display">
-            <div class="img-showcase">
+    <div className="card-wrapper">
+      <div className="card">
+        <div className="product-imgs">
+          <div className="img-display">
+            <div className="img-showcase">
               <img src={img} alt="shoe image" />
               <img src={img} alt="shoe image" />
               <img src={img} alt="shoe image" />
               <img src={img} alt="shoe image" />
             </div>
           </div>
-          <div class="img-select">
-            <div class="img-item">
+          <div className="img-select">
+            <div className="img-item">
               <img src={img} alt="shoe image" />
             </div>
-            <div class="img-item">
+            <div className="img-item">
               <img src={imgg} alt="shoe image" />
             </div>
-            <div class="img-item">
+            <div className="img-item">
               <img src={img} alt="shoe image" />
             </div>
-            <div class="img-item">
+            <div className="img-item">
               <img src={imgg} alt="shoe image" />
             </div>
           </div>
         </div>
 
-        <div class="product-content">
-          <h2 class="product-title">nike shoes</h2>
+        <div className="product-content">
+          <h2 className="product-title">{allProducts[id].name}</h2>
 
-          <div class="product-price">
-            <p class="last-price">
-              Old Price: <span>$257.00</span>
-            </p>
-            <p class="new-price">
-              New Price: <span>$249.00 (5%)</span>
+          <div className="product-price">
+            <p className="new-price">
+              <span> {allProducts[id].price}(5%)</span>
             </p>
           </div>
 
-          <div class="product-detail">
+          <div className="product-detail">
             <h2>about this item: </h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
@@ -75,14 +91,39 @@ export default function Productdetails() {
             </ul>
           </div>
 
-          <div class="purchase-info">
-            <input type="number" min="0" value="1" />
-            <button type="button" class="btn">
-              Add to Cart
-            </button>
-            <button type="button" class="btn">
-              Compare
-            </button>
+          <div className="purchase-info">
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{
+                mr: 2,
+                width: 150,
+                height: "8%",
+                color: "black",
+                borderColor: "grey.500",
+              }}
+              onClick={() => {
+                addToCart(allProducts[id]);
+              }}
+            >
+              {cartbtn}
+            </Button>
+
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{
+                width: 150,
+                height: "8%",
+                color: "black",
+                borderColor: "grey.500",
+              }}
+              onClick={() => {
+                navigate("/tryon");
+              }}
+            >
+              Try-me on
+            </Button>
           </div>
         </div>
       </div>

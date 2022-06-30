@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItem, deleteItem } from "../redux/actions/index";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ import img from "../images/intro-bg.jpg";
 
 const Framescards = (product) => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.addItem);
+
   const [cartbtn, setCarBtn] = useState("Add");
 
   const cartDetails = (id) => {
@@ -61,7 +61,7 @@ const Framescards = (product) => {
             borderRadius: 1,
           }}
         >
-          <Link to={`/product/${product.id}`}>
+          <Link to={`/product/${product.prodIndex}`}>
             <CardMedia
               component="img"
               height="194"

@@ -14,7 +14,7 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import List from "@mui/material/List";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
-
+import ClearIcon from "@mui/icons-material/Clear";
 import ListItem from "@mui/material/ListItem";
 
 const style = {
@@ -70,6 +70,7 @@ export const Navigation = () => {
                   style={{ color: "black" }}
                 >
                   <h5>{item.name}</h5>
+                  <h6 style={{ float: "right" }}>{item.price}</h6>
                 </Link>
 
                 <Button onClick={decrementQty}>
@@ -86,8 +87,9 @@ export const Navigation = () => {
                   <AddBoxIcon />
                 </Button>
               </div>
-              <div>
-                <h6 style={{ float: "right" }}>{item.price}</h6>
+              <div></div>
+              <div style={{ margin: "4px 0px 4px 0px" }}>
+                <ClearIcon />
               </div>
             </div>
           </ListItem>
@@ -104,12 +106,12 @@ export const Navigation = () => {
           <h3>Empty Cart</h3>
         </div>
       ) : (
-        <div style={{ display: "grid", alignItems: "center" }}>
+        <div style={{ float: "right", marginRight: "10px" }}>
           <Button
             type="submit"
             variant="outlined"
-            size="large"
             sx={{
+              width: 100,
               color: "black",
               mt: 2,
               borderColor: "grey.500",

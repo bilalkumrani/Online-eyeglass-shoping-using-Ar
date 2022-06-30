@@ -271,32 +271,7 @@ img {
 .purchase-info {
   margin: 1.5rem 0;
 }
-.purchase-info input,
-.purchase-info .btn {
-  border: 1.5px solid #ddd;
-  border-radius: 25px;
-  text-align: center;
-  padding: 0.45rem 0.8rem;
-  outline: 0;
-  margin-right: 0.2rem;
-  margin-bottom: 1rem;
-}
-.purchase-info input {
-  width: 60px;
-}
-.purchase-info .btn {
-  cursor: pointer;
-  color: #fff;
-}
-.purchase-info .btn:first-of-type {
-  background: #256eff;
-}
-.purchase-info .btn:last-of-type {
-  background: #f64749;
-}
-.purchase-info .btn:hover {
-  opacity: 0.9;
-}
+
 .social-links {
   display: flex;
   align-items: center;
