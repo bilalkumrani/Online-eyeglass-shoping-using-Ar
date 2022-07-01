@@ -53,50 +53,49 @@ const Framescards = (product) => {
           zIndex: "0",
         }}
       >
-        <Link to={`/product/${product.prodIndex}`}>
-          <Card
-            sx={{
-              boxShadow: 10,
+        <Card
+          sx={{
+            boxShadow: 10,
 
-              p: 2,
-              borderRadius: 1,
-            }}
-          >
+            p: 2,
+            borderRadius: 1,
+          }}
+        >
+          <Link to={`/product/${product.prodIndex}`}>
             <CardMedia
               component="img"
               height="194"
               image={img}
               alt="Paella dish"
             />
-
-            <div
-              className="text-center"
-              style={{ display: "flex", justifyContent: "space-around" }}
+          </Link>
+          <div
+            className="text-center"
+            style={{ display: "flex", justifyContent: "space-around" }}
+          >
+            <h5 className="text-muted">{product.name}</h5>
+            <h5 className="text-muted">{product.price}</h5>
+          </div>
+          <div className="text-center">
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{
+                width: 200,
+                height: "5%",
+                color: "black",
+                borderColor: "grey.500",
+              }}
+              onClick={() => {
+                addToCart(product);
+                cartDetails(product.id);
+              }}
             >
-              <h5 className="text-muted">{product.name}</h5>
-              <h5 className="text-muted">{product.price}</h5>
-            </div>
-            <div className="text-center">
-              <Button
-                variant="outlined"
-                size="large"
-                sx={{
-                  width: 200,
-                  height: "5%",
-                  color: "black",
-                  borderColor: "grey.500",
-                }}
-                onClick={() => {
-                  addToCart(product);
-                  cartDetails(product.id);
-                }}
-              >
-                <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
-                {cartbtn}
-              </Button>
-            </div>
-          </Card>
-        </Link>
+              <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
+              {cartbtn}
+            </Button>
+          </div>
+        </Card>
       </div>
     </>
   );

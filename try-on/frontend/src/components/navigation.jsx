@@ -16,6 +16,7 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import ClearIcon from "@mui/icons-material/Clear";
 import ListItem from "@mui/material/ListItem";
+import { useDispatch } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -26,6 +27,7 @@ const style = {
 };
 
 export const Navigation = () => {
+  const dispatch = useDispatch();
   const state = useSelector((state) => state.manageItems);
   const [qty, setQty] = useState(0);
 
@@ -88,7 +90,7 @@ export const Navigation = () => {
                 </Button>
               </div>
               <div></div>
-              <div style={{ margin: "4px 0px 4px 0px" }}>
+              <div style={{ margin: "4px 0px 4px 0px" }} onClick={() => {}}>
                 <ClearIcon />
               </div>
             </div>
