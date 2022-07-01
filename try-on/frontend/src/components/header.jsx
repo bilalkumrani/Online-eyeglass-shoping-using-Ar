@@ -26,9 +26,6 @@ export const Header = () => {
   return (
     <>
       <Slider />
-      {/* <Link className="btn btn-custom btn-lg" to="tryon">
-        Try on
-      </Link> */}
 
       <div className="text-center" style={{ marginTop: "70px" }}>
         <Button
