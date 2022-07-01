@@ -33,7 +33,7 @@ export const Contact = (props) => {
   };
   return (
     <>
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "60px" }}>
         <div id="contact">
           <div className="container">
             <div className="col-md-8">

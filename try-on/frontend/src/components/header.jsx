@@ -1,70 +1,36 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import JsonData from "../data/data.json";
+import { getAlldata } from "../redux/actions/index";
 import { Contact } from "./contact";
 import Button from "@mui/material/Button";
 import CatAndFilters from "./CatAndFilters";
-
 import Framescards from "./Framescards";
+import Slider from "./Slider";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
+  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+  const { allProducts } = useSelector((state) => state.manageItems);
 
   useEffect(() => {
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
       .then((result) => {
-        setProducts(result.data);
+        dispatch(getAlldata(result.data));
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, [1]);
 
   return (
     <>
-      <header id="header">
-        <div className="intro">
-          <div className="overlay">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-8 col-md-offset-2 intro-text">
-                  <h1>
-                    {JsonData.Header ? JsonData.Header.title : "Loading"}
-                    <span></span>
-                  </h1>
-                  <p>{JsonData.About ? JsonData.About.paragraph : "Loading"}</p>
-                  <Link className="btn btn-custom btn-lg" to="tryon">
-                    Try on
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Slider />
+      {/* <Link className="btn btn-custom btn-lg" to="tryon">
+        Try on
+      </Link> */}
 
-      <div className="text-center">
-        <h1>Reframing the Eyewear Game – Buy Glasses Online</h1>
-        <p className="description">
-          We make it easy to find quality{" "}
-          <Link className="primary" to="eyeglasses">
-            eyeglasses
-          </Link>{" "}
-          and{" "}
-          <Link className="primary" to="sunglasses">
-            prescription sunglasses
-          </Link>{" "}
-          online.
-          <br />
-          With thousands of glasses,{" "}
-          <Link className="primary" to="virtual-try-on">
-            Virtual Try-On
-          </Link>
-          , 2-Day Delivery , and frames for every budget —
-          <br />
-          think of us as the one-stop shop for all your eyewear needs.{" "}
-        </p>
-      </div>
-
-      <div className="text-center" style={{ marginTop: "30px" }}>
+      <div className="text-center" style={{ marginTop: "70px" }}>
         <Button
           variant="outlined"
           size="large"
@@ -98,9 +64,14 @@ export const Header = () => {
 
       <div className="container">
         <div className="row">
-          {products.map((item) => {
+          {allProducts.map((item, index) => {
             return (
-              <Framescards id={item._id} name={item.name} price={item.price} />
+              <Framescards
+                id={item._id}
+                prodIndex={index}
+                name={item.name}
+                price={item.price}
+              />
             );
           })}
         </div>

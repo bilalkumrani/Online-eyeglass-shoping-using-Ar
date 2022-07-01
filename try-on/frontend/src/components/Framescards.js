@@ -6,12 +6,33 @@ import Button from "@mui/material/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addItem, deleteItem } from "../redux/actions/index";
+import axios from "axios";
 
 import img from "../images/intro-bg.jpg";
 
 const Framescards = (product) => {
   const dispatch = useDispatch();
+
   const [cartbtn, setCarBtn] = useState("Add");
+
+  const cartDetails = (id) => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+
+      body: JSON.stringify({ productId: id }),
+    };
+
+    fetch("http://localhost:4000/user/addcart", requestOptions)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const addToCart = (product) => {
     if (cartbtn === "Add") {
       dispatch(addItem(product));
@@ -25,17 +46,22 @@ const Framescards = (product) => {
   return (
     <>
       <div
-        className="col-md-3"
-        style={{ marginTop: "20px", position: "sticky", zIndex: "0" }}
+        className="col-sm-4 cards"
+        style={{
+          marginTop: "50px",
+          position: "sticky",
+          zIndex: "0",
+        }}
       >
         <Card
           sx={{
-            boxShadow: 3,
+            boxShadow: 10,
 
+            p: 2,
             borderRadius: 1,
           }}
         >
-          <Link to="product">
+          <Link to={`/product/${product.prodIndex}`}>
             <CardMedia
               component="img"
               height="194"
@@ -43,7 +69,6 @@ const Framescards = (product) => {
               alt="Paella dish"
             />
           </Link>
-
           <div
             className="text-center"
             style={{ display: "flex", justifyContent: "space-around" }}
@@ -56,7 +81,6 @@ const Framescards = (product) => {
               variant="outlined"
               size="large"
               sx={{
-                m: 2,
                 width: 200,
                 height: "5%",
                 color: "black",
@@ -64,6 +88,7 @@ const Framescards = (product) => {
               }}
               onClick={() => {
                 addToCart(product);
+                cartDetails(product.id);
               }}
             >
               <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />

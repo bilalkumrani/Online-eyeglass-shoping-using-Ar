@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Framescards from "./Framescards";
 
-import { useSelector } from "react-redux";
-
 const Allproducts = () => {
-  const state = useSelector((state) => state.manageItems);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/product/all")
+      .then((res) => res.json())
+      .then((result) => {
+        setProducts(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [1]);
 
   return (
     <div className="container" style={{ marginTop: "100px" }}>
       <div className="row">
-        {state.map((item) => {
+        {products.map((item) => {
           return (
-            <Framescards id={item._id} name={item.name} price={item.price} />
+            <Framescards
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              price={item.price}
+            />
           );
         })}
       </div>

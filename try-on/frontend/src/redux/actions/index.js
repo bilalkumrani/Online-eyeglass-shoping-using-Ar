@@ -5,6 +5,13 @@ export const addItem = (product) => {
   };
 };
 
+export const getAlldata = (alldata) => {
+  return {
+    type: "AllDATA",
+    payload: alldata,
+  };
+};
+
 export const deleteItem = (product) => {
   return {
     type: "DELETE_ITEM",

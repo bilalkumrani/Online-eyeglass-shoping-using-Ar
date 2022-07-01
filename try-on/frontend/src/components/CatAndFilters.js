@@ -30,13 +30,8 @@ const CatAndFilters = () => {
     <>
       <div
         style={{
-          marginTop: "20px",
-
+          marginTop: "50px",
           padding: "10px",
-          border: "1px solid",
-          borderColor: "#9E9E9E",
-          borderLeft: "none",
-          borderRight: "none",
         }}
       >
         <div style={{ display: "flex", justifyContent: "center" }}>

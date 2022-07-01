@@ -11,7 +11,13 @@ const payment = require("./Routes/paymentRoutes");
 const cors = require("cors");
 const PORT = 4000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ extended: true }));
+// app.use(express.json({ extended: true }));
+// app.use(
+//   bodyParser.urlencoded({
+//     extended: true,
+//   })
+// );
 
 const corsOptions = {
   origin: "*",
@@ -23,6 +29,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
+
 app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", authenticate, userRoutes);

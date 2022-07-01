@@ -14,6 +14,7 @@ function init_VTOWidget(placeHolder, canvas, toggleLoading) {
     },
     sku: "empty", // SKU loadded at the beginning
     // image displayed when face is not found:
+    searchImageMask: "kjhj",
 
     searchImageColor: 0xeeeeee, // color of loading (face not found) animation
     searchImageRotationSpeed: -0.001, // negative -> clockwise
