@@ -47,6 +47,7 @@ const Eyeglasses = () => {
               onClick={() => {
                 navigate("quiz");
               }}
+              style={{ float: "right" }}
             >
               Take Quiz
             </Button>

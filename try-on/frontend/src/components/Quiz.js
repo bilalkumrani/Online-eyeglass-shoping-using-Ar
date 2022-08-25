@@ -36,9 +36,11 @@ const handleData = (data) => {
 const Quiz = () => {
   return (
     <>
-      <div style={{ marginTop: "100px" }}>
-        <h2 className="text-muted text-center">You choice is our priority</h2>
-        <Survey.Survey onComplete={handleData} json={json} />
+      <div className="container" style={{ marginTop: "100px" }}>
+        <div className="row">
+          <h2 className="text-muted text-center">You choice is our priority</h2>
+          <Survey.Survey onComplete={handleData} json={json} />
+        </div>
       </div>
     </>
   );

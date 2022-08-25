@@ -77,12 +77,12 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="container" style={{ marginTop: "80px" }}>
+      <div className="container" style={{ marginTop: "100px" }}>
         <div className="row">
           <div className="col-md-6">
             <h2 className="text-muted">Let US Decide what is good for you!</h2>
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 ">
             <Button
               variant="outlined"
               size="large"
@@ -96,6 +96,7 @@ export const Header = () => {
               onClick={() => {
                 navigate("quiz");
               }}
+              style={{ float: "right" }}
             >
               Take Quiz
             </Button>
