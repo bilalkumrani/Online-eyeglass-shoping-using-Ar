@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^7.2.2"
+    "concurrently": "^7.2.2",
+    "survey-react": "^1.9.46"
   }
 }

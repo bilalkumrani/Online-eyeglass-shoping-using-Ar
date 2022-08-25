@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import img from "../images/intro-bg.jpg";
 import imgg from "../images/glass.jpg";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addItem, deleteItem } from "../redux/actions/index";
@@ -11,8 +12,27 @@ export default function Productdetails() {
   const dispatch = useDispatch();
   const [cartbtn, setCarBtn] = useState("Add");
   const { allProducts } = useSelector((state) => state.manageItems);
+  const { cart } = useSelector((state) => state.manageItems);
   const { id } = useParams();
   let navigate = useNavigate();
+
+  const cartDetails = (id) => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+
+      body: JSON.stringify({ productId: id }),
+    };
+
+    fetch("http://localhost:4000/user/addcart", requestOptions)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const addToCart = (product) => {
     if (cartbtn === "Add") {
@@ -104,9 +124,20 @@ export default function Productdetails() {
               }}
               onClick={() => {
                 addToCart(allProducts[id]);
+                cartDetails(allProducts[id]);
               }}
             >
-              {cartbtn}
+              {cart.length === 0 ? (
+                <>
+                  <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
+                  Add
+                </>
+              ) : (
+                <>
+                  <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
+                  {cartbtn}
+                </>
+              )}
             </Button>
 
             <Button

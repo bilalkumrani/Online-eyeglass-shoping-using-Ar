@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import CartBtn from "./CartBtn";
@@ -29,10 +29,12 @@ const style = {
 };
 
 export const Navigation = () => {
-  const dispatch = useDispatch();
+  const totalPrice = useRef(0);
   const { cart } = useSelector((state) => state.manageItems);
+
+  const dispatch = useDispatch();
+
   const [qty, setQty] = useState(0);
-  const [total, setTotal] = useState(0);
 
   const [sidebar, setSidebar] = useState({
     top: false,
@@ -129,7 +131,7 @@ export const Navigation = () => {
         </div>
       ) : (
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <h3>{total}</h3>;
+          <h3>0</h3>
           <Button
             type="submit"
             variant="outlined"
