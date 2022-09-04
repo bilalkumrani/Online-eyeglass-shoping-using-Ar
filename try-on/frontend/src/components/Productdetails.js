@@ -16,32 +16,8 @@ export default function Productdetails() {
   const { id } = useParams();
   let navigate = useNavigate();
 
-  const cartDetails = (id) => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-
-      body: JSON.stringify({ productId: id }),
-    };
-
-    fetch("http://localhost:4000/user/addcart", requestOptions)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const addToCart = (product) => {
-    if (cartbtn === "Add") {
-      dispatch(addItem(product));
-      setCarBtn("Remove");
-    } else {
-      dispatch(deleteItem(product));
-      setCarBtn("Add");
-    }
+  const payment = () => {
+    navigate("/payment");
   };
 
   return (
@@ -122,22 +98,9 @@ export default function Productdetails() {
                 color: "black",
                 borderColor: "grey.500",
               }}
-              onClick={() => {
-                addToCart(allProducts[id]);
-                cartDetails(allProducts[id]);
-              }}
+              onClick={payment}
             >
-              {cart.length === 0 ? (
-                <>
-                  <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
-                  Add
-                </>
-              ) : (
-                <>
-                  <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
-                  {cartbtn}
-                </>
-              )}
+              Buy
             </Button>
 
             <Button

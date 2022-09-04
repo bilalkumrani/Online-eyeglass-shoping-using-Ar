@@ -28,6 +28,24 @@ const Framescards = (product) => {
     }
   };
 
+  const cartDetails = (id) => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+
+      body: JSON.stringify({ productId: id }),
+    };
+
+    fetch("http://localhost:4000/user/addcart", requestOptions)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <div
@@ -86,12 +104,11 @@ const Framescards = (product) => {
                 borderColor: "grey.500",
               }}
               onClick={() => {
-                // addToCart(product);
-                // cartDetails(product.id);
-                navigate("/tryon");
+                addToCart(product);
+                cartDetails(product.id);
               }}
             >
-              {/* {cart.length === 0 ? (
+              {cart.length === 0 ? (
                 <>
                   <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
                   Add
@@ -101,8 +118,7 @@ const Framescards = (product) => {
                   <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
                   {cartbtn}
                 </>
-              )} */}
-              Try-me on
+              )}
             </Button>
           </div>
         </Card>
