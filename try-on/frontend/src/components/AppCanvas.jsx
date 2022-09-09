@@ -75,7 +75,6 @@ function AppCanvas(props) {
   };
 
   const set_glassesModel = (sku) => {
-    console.log(sku);
     JEELIZVTOWIDGET.load(sku);
   };
 
