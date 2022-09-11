@@ -9,6 +9,7 @@ import Productdetails from "./components/Productdetails";
 import Payment from "./components/Payment";
 import "./App.css";
 import "./index";
+import Quiz from "./components/Quiz";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/all" element={<Allproducts />} />
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/product/:id" element={<Productdetails />} />
+        <Route exact path="/quiz" element={<Quiz />} />
       </Routes>
     </>
   );

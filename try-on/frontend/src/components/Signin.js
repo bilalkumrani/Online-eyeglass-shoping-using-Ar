@@ -106,7 +106,6 @@ const Signin = () => {
           <Link href="#">Forgot password ?</Link>
         </Typography>
         <Typography>
-          {" "}
           Do you have an account ?<Link href="#">Sign Up</Link>
         </Typography>
       </Paper>

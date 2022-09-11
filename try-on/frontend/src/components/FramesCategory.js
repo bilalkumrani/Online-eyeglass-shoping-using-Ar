@@ -6,6 +6,7 @@ const FramesCategory = ({ frame, closeGenderDiv }) => {
     thin: false,
     thick: false,
   });
+
   const handleChange = (e) => {
     console.log(e.target.value);
     if (e.target.value === "Thin") {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import CartBtn from "./CartBtn";
@@ -17,6 +17,8 @@ import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox
 import ClearIcon from "@mui/icons-material/Clear";
 import ListItem from "@mui/material/ListItem";
 import { useDispatch } from "react-redux";
+import { deleteItem } from "../redux/actions/index";
+import img from "../images/intro-bg.jpg";
 
 const style = {
   position: "absolute",
@@ -27,8 +29,11 @@ const style = {
 };
 
 export const Navigation = () => {
+  const totalPrice = useRef(0);
+  const { cart } = useSelector((state) => state.manageItems);
+
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.manageItems);
+
   const [qty, setQty] = useState(0);
 
   const [sidebar, setSidebar] = useState({
@@ -41,6 +46,10 @@ export const Navigation = () => {
 
   const incrementQty = () => {
     setQty(qty + 1);
+  };
+
+  const removeCart = (item) => {
+    dispatch(deleteItem(item));
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -62,42 +71,55 @@ export const Navigation = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {state.cart.map((item, index) => (
+        {cart.map((item, index) => (
           <ListItem key={index + 1}>
-            <div style={{ display: "flex" }}>
-              <div>
+            <div style={{ width: "80px" }}>
+              <img src={img} height="80px" alt="not found" />
+            </div>
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
                 <Link
-                  to="product"
+                  to={`product/${index}`}
                   onClick={toggleDrawer(anchor, false)}
                   style={{ color: "black" }}
                 >
                   <h5>{item.name}</h5>
-                  <h6 style={{ float: "right" }}>{item.price}</h6>
                 </Link>
+                <p style={{ marginTop: "8px" }}> {item.price}</p>
 
+                <div
+                  onClick={() => {
+                    removeCart(item);
+                  }}
+                >
+                  <ClearIcon style={{ cursor: "pointer" }} />
+                </div>
+              </div>
+              <div
+                style={{
+                  margin: "0px 40px 5px 10px",
+                }}
+              >
                 <Button onClick={decrementQty}>
                   <IndeterminateCheckBoxIcon />
                 </Button>
                 {qty}
 
-                <Button
-                  sx={{
-                    mr: 10,
-                  }}
-                  onClick={incrementQty}
-                >
+                <Button onClick={incrementQty}>
                   <AddBoxIcon />
                 </Button>
-              </div>
-              <div></div>
-              <div style={{ margin: "4px 0px 4px 0px" }} onClick={() => {}}>
-                <ClearIcon />
               </div>
             </div>
           </ListItem>
         ))}
       </List>
-      {state.cart.length === 0 ? (
+      {cart.length === 0 ? (
         <div
           style={{
             display: "flex",
@@ -108,7 +130,8 @@ export const Navigation = () => {
           <h3>Empty Cart</h3>
         </div>
       ) : (
-        <div style={{ float: "right", marginRight: "10px" }}>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <h3>0</h3>
           <Button
             type="submit"
             variant="outlined"
@@ -118,9 +141,14 @@ export const Navigation = () => {
               mt: 2,
               borderColor: "grey.500",
             }}
-            style={{ alignItems: "center" }}
           >
-            Checkout
+            <Link
+              to="payment"
+              style={{ textDecoration: "none" }}
+              onClick={toggleDrawer(anchor, false)}
+            >
+              Checkout
+            </Link>
           </Button>
         </div>
       )}

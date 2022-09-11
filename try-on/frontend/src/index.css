@@ -316,3 +316,26 @@ img {
     padding-top: 0;
   }
 }
+
+section .option_list {
+  padding: 10px 0px;
+  display: block;
+}
+
+section .option_list .option {
+  background: aliceblue;
+  border: 1px solid #84c5fe;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+section .option_list .option:hover {
+  color: #004085;
+  background: #cce5ff;
+  border: 1px solid #b8daff;
+}

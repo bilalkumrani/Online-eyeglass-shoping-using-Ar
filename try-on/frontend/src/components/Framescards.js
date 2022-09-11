@@ -4,16 +4,29 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem, deleteItem } from "../redux/actions/index";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import img from "../images/intro-bg.jpg";
 
 const Framescards = (product) => {
+  const { cart } = useSelector((state) => state.manageItems);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [cartbtn, setCarBtn] = useState("Add");
+
+  const addToCart = (product) => {
+    if (cartbtn === "Add") {
+      dispatch(addItem(product));
+      setCarBtn("Remove");
+    } else {
+      dispatch(deleteItem(product));
+      setCarBtn("Add");
+    }
+  };
 
   const cartDetails = (id) => {
     const requestOptions = {
@@ -31,16 +44,6 @@ const Framescards = (product) => {
         console.log(res);
       })
       .catch((err) => console.log(err));
-  };
-
-  const addToCart = (product) => {
-    if (cartbtn === "Add") {
-      dispatch(addItem(product));
-      setCarBtn("Remove");
-    } else {
-      dispatch(deleteItem(product));
-      setCarBtn("Add");
-    }
   };
 
   return (
@@ -73,15 +76,29 @@ const Framescards = (product) => {
             className="text-center"
             style={{ display: "flex", justifyContent: "space-around" }}
           >
-            <h5 className="text-muted">{product.name}</h5>
-            <h5 className="text-muted">{product.price}</h5>
+            <h5 className="text-muted">
+              <Link
+                to={`/product/${product.prodIndex}`}
+                style={{ color: "gray" }}
+              >
+                {product.name}
+              </Link>
+            </h5>
+            <h5 className="text-muted">
+              <Link
+                to={`/product/${product.prodIndex}`}
+                style={{ color: "gray" }}
+              >
+                {product.price}
+              </Link>
+            </h5>
           </div>
           <div className="text-center">
             <Button
               variant="outlined"
-              size="large"
+              size="small"
               sx={{
-                width: 200,
+                width: "150",
                 height: "5%",
                 color: "black",
                 borderColor: "grey.500",
@@ -91,8 +108,17 @@ const Framescards = (product) => {
                 cartDetails(product.id);
               }}
             >
-              <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
-              {cartbtn}
+              {cart.length === 0 ? (
+                <>
+                  <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
+                  Add
+                </>
+              ) : (
+                <>
+                  <AiOutlineShoppingCart size={20} style={{ margin: "5px" }} />
+                  {cartbtn}
+                </>
+              )}
             </Button>
           </div>
         </Card>
