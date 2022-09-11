@@ -55,6 +55,23 @@ export const Navigation = () => {
     dispatch(deleteItem(item));
   };
 
+  const cartDetails = (id) => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+
+      body: JSON.stringify({ productId: id }),
+    };
+
+    fetch("http://localhost:4000/user/removecart", requestOptions)
+      .then((res) => res.json())
+      .then((result) => console.log("this is cart", result))
+      .catch((err) => console.log(err));
+  };
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event &&
@@ -98,7 +115,10 @@ export const Navigation = () => {
 
                 <div
                   onClick={() => {
-                    removeCart(item);
+                    cartDetails(item);
+                    console.log("this is product id ", item);
+                    window.location.reload();
+                    // removeCart(item);
                   }}
                 >
                   <ClearIcon style={{ cursor: "pointer" }} />

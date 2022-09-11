@@ -8,7 +8,7 @@ import Framescards from "./Framescards";
 import Slider from "./Slider";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../redux/actions/index";
+import { addUser, setCart } from "../redux/actions/index";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,38 @@ export const Header = () => {
   const { allProducts } = useSelector((state) => state.manageItems);
 
   useEffect(() => {
-    dispatch(addUser(JSON.parse(localStorage.getItem("user"))));
+    // axios
+    //   .post("http://localhost:4000/getuser", {
+    //     token: localStorage.getItem("token"),
+    //   })
+    //   .then((res) => {
+    //     console.log("halling ", res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    if (localStorage.getItem("token")) {
+      fetch("http://localhost:4000/user/getuser", {
+        method: "POST",
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+        body: {},
+      })
+        .then((result) => result.json())
+        .then((res) => {
+          if (!res.error) {
+            dispatch(addUser(res));
+            dispatch(setCart(res.cart));
+          } else {
+            dispatch(addUser(null));
+          }
+        });
+    } else {
+      dispatch(addUser(null));
+      dispatch(setCart([]));
+    }
 
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
@@ -27,7 +58,7 @@ export const Header = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [1]);
+  }, []);
 
   return (
     <>

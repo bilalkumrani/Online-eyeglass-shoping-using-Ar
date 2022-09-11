@@ -39,6 +39,11 @@ const manageItems = (state = initialState, action) => {
           return product.id !== action.payload.id;
         }),
       };
+    case "SET_CART":
+      return {
+        ...state,
+        cart: action.payload,
+      };
     default:
       return state;
   }

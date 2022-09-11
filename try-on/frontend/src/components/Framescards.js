@@ -20,7 +20,7 @@ const Framescards = (product) => {
 
   const addToCart = (product) => {
     if (cartbtn === "Add") {
-      dispatch(addItem(product));
+      //dispatch(addItem(product));
       setCarBtn("Remove");
     } else {
       dispatch(deleteItem(product));
@@ -104,8 +104,9 @@ const Framescards = (product) => {
                 borderColor: "grey.500",
               }}
               onClick={() => {
-                addToCart(product);
+                // addToCart(product);
                 cartDetails(product.id);
+                window.location.reload();
               }}
             >
               {cart.length === 0 ? (

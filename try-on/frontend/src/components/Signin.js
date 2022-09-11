@@ -51,7 +51,7 @@ const Signin = () => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
 
         dispatch(addUser(res.data.user));
-        window.location.reload();
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log(err);
