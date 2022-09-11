@@ -19,6 +19,7 @@ import ListItem from "@mui/material/ListItem";
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../redux/actions/index";
 import img from "../images/intro-bg.jpg";
+import { clearUser } from "../redux/actions/index";
 
 const style = {
   position: "absolute",
@@ -30,7 +31,9 @@ const style = {
 
 export const Navigation = () => {
   const totalPrice = useRef(0);
-  const { cart } = useSelector((state) => state.manageItems);
+  const { cart, user } = useSelector((state) => state.manageItems);
+
+  useEffect(() => {});
 
   const dispatch = useDispatch();
 
@@ -155,6 +158,11 @@ export const Navigation = () => {
     </Box>
   );
 
+  const logoutUser = () => {
+    localStorage.clear();
+    dispatch(clearUser());
+  };
+
   const [signin, setSignIn] = useState(false);
   const [singup, setSignUp] = useState(false);
   const handleOpen = () => setSignIn(true);
@@ -210,72 +218,146 @@ export const Navigation = () => {
                 </Link>
               </li>
 
-              <li>
-                <Button
-                  style={{
-                    marginTop: "7px",
-                    color: "#555",
+              {user ? (
+                <>
+                  <li>
+                    <Button
+                      style={{
+                        marginTop: "7px",
+                        color: "#555",
 
-                    textTransform: "uppercase",
+                        textTransform: "uppercase",
 
-                    fontSize: "15px",
-                    fontWeight: "400",
-                  }}
-                  onClick={handleOpen}
-                >
-                  Sign in
-                </Button>
-                <Modal
-                  aria-labelledby="transition-modal-title"
-                  aria-describedby="transition-modal-description"
-                  open={signin}
-                  onClose={handleClose}
-                  closeAfterTransition
-                  BackdropComponent={Backdrop}
-                  BackdropProps={{
-                    timeout: 500,
-                  }}
-                >
-                  <Fade in={signin}>
-                    <Box sx={style}>
-                      <Signin />
-                    </Box>
-                  </Fade>
-                </Modal>
-              </li>
-              <li>
-                <Button
-                  style={{
-                    marginTop: "7px",
-                    color: "#555",
+                        fontSize: "15px",
+                        fontWeight: "400",
+                      }}
+                      onClick={handleOpen}
+                    >
+                      {user.name}
+                    </Button>
+                    <Modal
+                      aria-labelledby="transition-modal-title"
+                      aria-describedby="transition-modal-description"
+                      open={signin}
+                      onClose={handleClose}
+                      closeAfterTransition
+                      BackdropComponent={Backdrop}
+                      BackdropProps={{
+                        timeout: 500,
+                      }}
+                    >
+                      <Fade in={signin}>
+                        <Box sx={style}>
+                          <Signin />
+                        </Box>
+                      </Fade>
+                    </Modal>
+                  </li>
+                  <li>
+                    <Button
+                      style={{
+                        marginTop: "7px",
+                        color: "#555",
 
-                    textTransform: "uppercase",
+                        textTransform: "uppercase",
 
-                    fontSize: "15px",
-                    fontWeight: "400",
-                  }}
-                  onClick={openSign}
-                >
-                  Sign up
-                </Button>
-                <Modal
-                  aria-labelledby="transition-modal-title"
-                  aria-describedby="transition-modal-description"
-                  open={singup}
-                  onClose={closeSign}
-                  closeAfterTransition
-                  BackdropComponent={Backdrop}
-                  BackdropProps={{
-                    timeout: 500,
-                  }}
-                >
-                  <Fade in={singup}>
-                    <Box sx={style}>
-                      <Signup />
-                    </Box>
-                  </Fade>
-                </Modal>
-              </li>
+                        fontSize: "15px",
+                        fontWeight: "400",
+                      }}
+                      onClick={logoutUser}
+                    >
+                      Logout
+                    </Button>
+                    <Modal
+                      aria-labelledby="transition-modal-title"
+                      aria-describedby="transition-modal-description"
+                      open={signin}
+                      onClose={handleClose}
+                      closeAfterTransition
+                      BackdropComponent={Backdrop}
+                      BackdropProps={{
+                        timeout: 500,
+                      }}
+                    >
+                      <Fade in={signin}>
+                        <Box sx={style}>
+                          <Signin />
+                        </Box>
+                      </Fade>
+                    </Modal>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Button
+                      style={{
+                        marginTop: "7px",
+                        color: "#555",
+
+                        textTransform: "uppercase",
+
+                        fontSize: "15px",
+                        fontWeight: "400",
+                      }}
+                      onClick={handleOpen}
+                    >
+                      Sign in
+                    </Button>
+                    <Modal
+                      aria-labelledby="transition-modal-title"
+                      aria-describedby="transition-modal-description"
+                      open={signin}
+                      onClose={handleClose}
+                      closeAfterTransition
+                      BackdropComponent={Backdrop}
+                      BackdropProps={{
+                        timeout: 500,
+                      }}
+                    >
+                      <Fade in={signin}>
+                        <Box sx={style}>
+                          <Signin />
+                        </Box>
+                      </Fade>
+                    </Modal>
+                  </li>
+                  <li>
+                    <Button
+                      style={{
+                        marginTop: "7px",
+                        color: "#555",
+
+                        textTransform: "uppercase",
+
+                        fontSize: "15px",
+                        fontWeight: "400",
+                      }}
+                      onClick={openSign}
+                    >
+                      Sign up
+                    </Button>
+                    <Modal
+                      aria-labelledby="transition-modal-title"
+                      aria-describedby="transition-modal-description"
+                      open={singup}
+                      onClose={closeSign}
+                      closeAfterTransition
+                      BackdropComponent={Backdrop}
+                      BackdropProps={{
+                        timeout: 500,
+                      }}
+                    >
+                      <Fade in={singup}>
+                        <Box sx={style}>
+                          <Signup />
+                        </Box>
+                      </Fade>
+                    </Modal>
+                  </li>
+                </>
+              )}
+
               <div
                 style={{ display: "inline" }}
                 onClick={toggleDrawer("right", true)}

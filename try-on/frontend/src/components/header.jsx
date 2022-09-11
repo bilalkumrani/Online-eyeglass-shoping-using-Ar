@@ -8,6 +8,7 @@ import Framescards from "./Framescards";
 import Slider from "./Slider";
 
 import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../redux/actions/index";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ export const Header = () => {
   const { allProducts } = useSelector((state) => state.manageItems);
 
   useEffect(() => {
+    dispatch(addUser(JSON.parse(localStorage.getItem("user"))));
+
     fetch("http://localhost:4000/product/all")
       .then((res) => res.json())
       .then((result) => {

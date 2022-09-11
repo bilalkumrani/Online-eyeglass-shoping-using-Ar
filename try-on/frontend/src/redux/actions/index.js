@@ -18,3 +18,17 @@ export const deleteItem = (product) => {
     payload: product,
   };
 };
+
+export const addUser = (user) => {
+  return {
+    type: "USER",
+    payload: user,
+  };
+};
+
+export const clearUser = () => {
+  return {
+    type: "CLEAR",
+    payload: null,
+  };
+};

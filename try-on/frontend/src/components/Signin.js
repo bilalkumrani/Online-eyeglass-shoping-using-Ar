@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+
 import {
   Grid,
   Paper,
@@ -12,6 +14,7 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import { addUser } from "../redux/actions/index";
 
 const paperStyle = {
   padding: 20,
@@ -24,6 +27,8 @@ const avatarStyle = { backgroundColor: "#1bbd7e" };
 const btnstyle = { margin: "8px 0" };
 
 const Signin = () => {
+  const dispatch = useDispatch();
+
   const [signinData, setSignin] = useState({
     email: "",
     password: "",
@@ -39,11 +44,14 @@ const Signin = () => {
   };
 
   const singinDetails = () => {
-    console.log(signinData);
     axios
       .post("http://localhost:4000/login", signinData)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+
+        dispatch(addUser(res.data.user));
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

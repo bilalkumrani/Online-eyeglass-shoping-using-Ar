@@ -35,6 +35,7 @@ const Signin = () => {
       .post("http://localhost:4000/signup", signupData)
       .then((res) => {
         console.log(res);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

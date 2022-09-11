@@ -1,10 +1,12 @@
 const initialState = {
   allProducts: [],
   cart: [],
+  user: {},
   qty: 0,
 };
 
 const manageItems = (state = initialState, action) => {
+  console.log("thissssssssssssssssssssss", action.payload);
   switch (action.type) {
     case "ADD_ITEM":
       return {
@@ -16,6 +18,18 @@ const manageItems = (state = initialState, action) => {
       return {
         ...state,
         allProducts: action.payload,
+      };
+
+    case "USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+    case "CLEAR":
+      return {
+        ...state,
+        user: action.payload,
       };
 
     case "DELETE_ITEM":
