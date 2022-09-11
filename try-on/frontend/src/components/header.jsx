@@ -105,6 +105,7 @@ export const Header = () => {
                 prodIndex={index}
                 name={item.name}
                 price={item.price}
+                pic={item.pic}
               />
             );
           })}

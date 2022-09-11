@@ -68,7 +68,7 @@ const Framescards = (product) => {
             <CardMedia
               component="img"
               height="194"
-              image={img}
+              image={product.pic}
               alt="Paella dish"
             />
           </Link>

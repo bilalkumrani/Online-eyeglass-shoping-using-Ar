@@ -17,7 +17,7 @@ const App = () => {
       <Navigation />
       <Routes>
         <Route exact path="/" element={<Header />} />
-        <Route exact path="/tryon" element={<AppCanvas />} />
+        <Route exact path="/tryon/:sku" element={<AppCanvas />} />
         <Route exact path="/sunglasses" element={<Sunglasses />} />
         <Route exact path="/eyeglasses" element={<Eyeglasses />} />
         <Route exact path="/all" element={<Allproducts />} />

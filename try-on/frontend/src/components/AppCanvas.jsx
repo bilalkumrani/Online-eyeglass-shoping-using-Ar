@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
+import { useParams } from "react-router-dom";
+
 import { JEELIZVTO, JEELIZVTOWIDGET } from "jeelizvtowidget";
 
 function init_VTOWidget(placeHolder, canvas, toggleLoading) {
@@ -55,6 +57,8 @@ function AppCanvas(props) {
   const refAdjust = useRef();
   const refChangeModel = useRef();
   const refLoading = useRef();
+
+  const { sku } = useParams();
 
   const toggleLoading = (isLoadingVisible) => {
     refLoading.current.style.display = isLoadingVisible ? "block" : "none";
@@ -117,11 +121,11 @@ function AppCanvas(props) {
       >
         <button
           className="JeelizVTOWidgetButton"
-          onClick={set_glassesModel.bind(this, "rayban_aviator_or_vertFlash")}
+          onClick={set_glassesModel.bind(this, sku)}
         >
           Model 1
         </button>
-        <button
+        {/* <button
           className="JeelizVTOWidgetButton"
           onClick={set_glassesModel.bind(
             this,
@@ -135,7 +139,7 @@ function AppCanvas(props) {
           onClick={set_glassesModel.bind(this, "carrera_113S_blue")}
         >
           Model 3
-        </button>
+        </button> */}
       </div>
 
       <div ref={refLoading} className="JeelizVTOWidgetLoading">

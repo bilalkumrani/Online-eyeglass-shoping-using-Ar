@@ -18,6 +18,10 @@ const productSchema = new mongoose.Schema({
     default:
       "https://media.istockphoto.com/photos/eyeglasses-isolated-on-white-background-with-clipping-path-picture-id1304136213?b=1&k=20&m=1304136213&s=170667a&w=0&h=-bgkU3YIweB63JV9z-rD0AT2nh-XGhxULv22weDP6v0=",
   },
+  sku: {
+    type: String,
+    required: true,
+  },
 });
 
 const product = mongoose.model("Product", productSchema);

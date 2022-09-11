@@ -103,24 +103,24 @@ export default function Productdetails() {
         <div className="product-imgs">
           <div className="img-display">
             <div className="img-showcase">
-              <img src={img} alt="shoe image" />
-              <img src={img} alt="shoe image" />
-              <img src={img} alt="shoe image" />
-              <img src={img} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
             </div>
           </div>
           <div className="img-select">
             <div className="img-item">
-              <img src={img} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
             </div>
             <div className="img-item">
-              <img src={imgg} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
             </div>
             <div className="img-item">
-              <img src={img} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
             </div>
             <div className="img-item">
-              <img src={imgg} alt="shoe image" />
+              <img src={allProducts[id].pic} alt="shoe image" />
             </div>
           </div>
         </div>
@@ -129,9 +129,9 @@ export default function Productdetails() {
           <h2 className="product-title">{allProducts[id].name}</h2>
 
           <div className="product-price">
-            <p className="new-price">
-              <span> {allProducts[id].price}(5%)</span>
-            </p>
+            <h3 className="new-price">
+              <span>{` ${allProducts[id].price}`} </span>
+            </h3>
           </div>
 
           <div className="product-detail">
@@ -145,23 +145,6 @@ export default function Productdetails() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.
             </p>
-            <ul>
-              <li>
-                Color: <span>Black</span>
-              </li>
-              <li>
-                Available: <span>in stock</span>
-              </li>
-              <li>
-                Category: <span>Shoes</span>
-              </li>
-              <li>
-                Shipping Area: <span>All over the world</span>
-              </li>
-              <li>
-                Shipping Fee: <span>Free</span>
-              </li>
-            </ul>
           </div>
 
           <div className="purchase-info">
@@ -190,7 +173,7 @@ export default function Productdetails() {
                 borderColor: "grey.500",
               }}
               onClick={() => {
-                navigate("/tryon");
+                navigate(`/tryon/${allProducts[id].sku}`);
               }}
             >
               Try-me on
